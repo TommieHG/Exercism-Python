@@ -17,16 +17,15 @@ class Luhn:
         #filter short strings
         if(len(num_list) < 2):
            return False
-           
-        #turn string data type to int data type
-        for i in range(len(num_list)):
-            num_list[i] = int(num_list[i])
+
+        #convert string items to integer items
+        int_list = list(map(int, num_list))
 
         #the luhn algorithm
-        for i in range(1, len(num_list), 2):
-            num_list[i] *= 2
+        for i in range(1, len(int_list), 2):
+            int_list[i] *= 2
             
-            if num_list[i] > 9:
-                num_list[i] -= 9
+            if int_list[i] > 9:
+                int_list[i] -= 9
         
-        return sum(num_list) % 10 == 0
+        return sum(int_list) % 10 == 0
